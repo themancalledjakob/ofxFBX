@@ -77,12 +77,9 @@ linux:
 	ADDON_INCLUDES_EXCLUDE = libs/libfbxsdk_2019.5/include/libxml2/%
 	ADDON_INCLUDES_EXCLUDE += libs/libxml2/include/%
 	ADDON_LIBS_EXCLUDE = libs/libxml2
+	ADDON_LIBS = libs/libfbxsdk_2019.5/lib/linux/libfbxsdk.a
 
 linux64:
 	ADDON_INCLUDES_EXCLUDE = libs/libfbxsdk_2019.5/include/libxml2/%
-
-armv6l:
-	ADDON_INCLUDES_EXCLUDE = libs/libfbxsdk_2019.5/include/libxml2/%
-
-armv7l:
-	ADDON_INCLUDES_EXCLUDE = libs/libfbxsdk_2019.5/include/libxml2/%
+	ADDON_LIBS = libs/libfbxsdk_2019.5/lib/linux64/libfbxsdk.a
+	ADDON_LIBS += libs/libxml2/lib/linux64/libxml2.a
