@@ -13,39 +13,40 @@
 
 // note: Bones are called clusters when referring to them from an FbxMesh in the FBX SDK
 class ofxFBXBone : public ofxFBXNode {
-public:
-    
-    ofxFBXSource::Node::NodeType getType() override;
-    
-    void setBoneSource( shared_ptr<ofxFBXSource::Bone> asrc, shared_ptr<ofxFBXNode> aself );
-    
-    void update() override;
-    void lateUpdate();
-    
-    void enableAnimation( bool bRecursively );
-    void disableAnimation( bool bRecursively);
-    bool isAnimationEnabled();
-    
-    void draw( float aLen, bool aBDrawAxes );
-    
-    int getNumBones();
-    
-    shared_ptr<ofxFBXBone> getBone( string aName );
-    void findBoneRecursive( string aName, shared_ptr<ofxFBXBone>& returnBone );
-    
-    void pointTo( glm::vec3 aTarget );
-    void pointTo( glm::vec3 aTarget, glm::vec3 aAxis );
-    
-    shared_ptr<ofxFBXSource::Bone> boneSrc;// = NULL;
-    map< string, shared_ptr<ofxFBXBone> > childBones;
-    
-    string getAsString( int aLevel=0) override;
-    
-    bool bUpdateFromAnimation=true;
-    
-    
-    
-    
+    public:
+
+        ofxFBXSource::Node::NodeType getType() override;
+
+        void setBoneSource(shared_ptr <ofxFBXSource::Bone> asrc, shared_ptr <ofxFBXNode> aself);
+
+        void update() override;
+        void lateUpdate();
+
+        void enableAnimation(bool bRecursively);
+        void disableAnimation(bool bRecursively);
+        bool isAnimationEnabled();
+
+        void getSkeleton(vector <string> & drawBoneNames, ofPolyline & skeleton);
+        void draw(float aLen, bool aBDrawAxes, vector <string> & drawBoneNames);
+
+        int getNumBones();
+
+        shared_ptr <ofxFBXBone> getBone(string aName);
+        void findBoneRecursive(string aName, shared_ptr <ofxFBXBone> & returnBone);
+
+        void pointTo(glm::vec3 aTarget);
+        void pointTo(glm::vec3 aTarget, glm::vec3 aAxis);
+
+        shared_ptr <ofxFBXSource::Bone> boneSrc; // = NULL;
+        map <string, shared_ptr <ofxFBXBone> > childBones;
+
+        string getAsString(int aLevel = 0) override;
+
+        bool bUpdateFromAnimation = true;
+
+
+
+
 //    ofxFBXBone();
 //    ~ofxFBXBone();
 //
@@ -99,14 +100,14 @@ public:
 ////    map< string, ofxFBXBone > bones;
 ////    map< string, ofxFBXBone* > sourceBones;
 //    map< string, ofxFBXBone* > childBones;
-    
+
 //    ofxFBXBone* sourceBone;
-    
-protected:
+
+    protected:
 //    void findBoneRecursive( string aName, ofxFBXBone*& returnBone );
 //    void populateBonesRecursive( map< string, ofxFBXBone* >& aBoneMap );
 //    bool bExists, bIsRoot;
-    
+
 //    bool bExternalControlEnabled;
 //    bool bUpdateFromAnimation;
 };
